@@ -1,0 +1,64 @@
+@page "/books"
+@inject HttpClient Http
+@using BookApp.Models
+
+<h3>Ma bibliothèque 📚</h3>
+
+@if (books is null)
+{
+    <p><em>Chargement en cours...</em></p>
+}
+else
+{
+    <ul>
+        @foreach (var book in books)
+        {
+            <li>
+                @* <strong>@book.Title</strong> par @book.Author
+                @if (book.IsRead)
+                {
+                    <span style="color: green;"> (lu)</span>
+                }
+                else
+                {
+                    <button class="btn btn-sm btn-primary" @onclick="() => MarkAsRead(book.Id)">Marquer comme lu</button>
+                } *@
+            </li>
+        }
+    </ul>
+}
+
+<hr />
+
+<h4>Ajouter un livre</h4>
+@* <EditForm Model="newBook"
+          OnValidSubmit="AddBook">
+    <InputText @bind-Value="newBook.Title" placeholder="Titre" class="form-control mb-2" />
+    <InputText @bind-Value="newBook.Author" placeholder="Auteur" class="form-control mb-2" />
+    <button type="submit" class="btn btn-success">Ajouter</button>
+</EditForm> *@
+
+@code {
+    private List<Book>? books;
+    private Book newBook = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadBooks();
+    }
+
+    private async Task LoadBooks()
+    {
+        throw new NotImplementedException("LoadBooks method is not implemented yet.");
+    }
+
+    private async Task AddBook()
+    {
+        throw new NotImplementedException("AddBook method is not implemented yet.");
+    }
+
+    private async Task MarkAsRead(int id)
+    {
+        throw new NotImplementedException("MarkAsRead method is not implemented yet.");
+    }
+}
